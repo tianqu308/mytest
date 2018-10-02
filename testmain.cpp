@@ -1,9 +1,10 @@
 // ConsoleApplication3.cpp : Defines the entry point for the console application.
 //
-
+#ifdef _WIN32
 #include "stdafx.h"
+#endif
 #include <iostream>
-#include "test.h"
+#include "testmain.h"
 #include <map>
 #include <memory>
 
@@ -91,7 +92,10 @@ void TEST_throw()
   try
   {
     CThrow* a2 = new (std::nothrow)CThrow(-1);
-
+    if(!a2)
+    {
+        std::cout<< "Cthrow construct failed"<<std::endl;
+    }
   }
   catch (const char*)
   {
@@ -154,7 +158,7 @@ void TEST_unique_ptr_array()
 {
   std::unique_ptr<int[]>up(new int[10]{ 1 });
 
-  for (size_t i = 1; i != 10; ++i)
+  for (int i = 1; i != 10; ++i)
   {
     up[i] = i;
   }
@@ -246,6 +250,137 @@ void TEST_decltype()
 
 }
 
+class Foo
+{
+public:
+  Foo();
+  
+  // 拷贝构造函数 参数是一个const 类型的引用
+  Foo(const Foo& );
+  
+  int data[5] = {0,1,2,3,4};
+};
+
+Foo::Foo()
+{
+  
+  data[0] = 0;
+  data[1] = 1;
+  data[2] = 2;
+  data[3] = 3;
+  data[4] = 4;
+}
+
+Foo::Foo(const Foo&)
+{
+
+}
+
+class HasPtr
+{
+public:
+  HasPtr();
+  HasPtr(const std::string&s = std::string());
+  HasPtr( const HasPtr& ptr);
+  HasPtr& operator=(const HasPtr& rhs);
+  std::string* GetPtr(){return ps;}
+  ~HasPtr();
+private:
+  std::string* ps = nullptr;
+  int i =-1;
+};
+
+HasPtr::HasPtr()
+{
+  
+}
+
+HasPtr::HasPtr(const std::string&s)
+{
+  ps = new std::string(s);
+  i = 0;
+}
+
+HasPtr::HasPtr( const HasPtr& ptr)
+{
+  ps = new std::string(*ptr.ps);
+  i = ptr.i;
+}
+
+HasPtr::~HasPtr()
+{
+  if (ps) {
+    delete ps;
+  }
+}
+
+HasPtr& HasPtr::operator=(const HasPtr&rhs)
+{
+  std::string* newps = new std::string(*rhs.ps);
+  if(ps)
+  {
+    delete ps;
+  }
+  ps = newps;
+  i = rhs.i;
+  return *this;
+}
+
+HasPtr test_Hasptr(HasPtr hp)
+{
+  HasPtr ret = hp;
+  return ret;
+}
+
+class HasPtrEx
+{
+public:
+  HasPtrEx(const std::string&s= std::string()):
+  ps(new std::string(s)),i(0), use(new std::size_t(1)){}
+  
+  HasPtrEx(const HasPtrEx&p):
+  ps(p.ps), i(p.i), use(p.use){++*use;}
+  
+  HasPtrEx& operator=(const HasPtrEx& rhs);
+private:
+  std::string* ps;
+  int i;
+  std::size_t* use;
+};
+
+HasPtrEx& HasPtrEx::operator=(const HasPtrEx&rhs)
+{
+  ++*rhs.use;
+  if(--*use == 0)
+  {
+    delete ps;
+    delete use;
+  }
+  
+  ps = rhs.ps;
+  i = rhs.i;
+  use = rhs.use;
+  return *this;
+}
+
+void TEST_copy_constuctor()
+{
+  Foo a;
+  Foo b(a);
+  
+  std::for_each(std::begin(b.data), std::end(b.data), [](int item){
+    std::cout<< item<<std::endl;
+  });
+  
+  {
+    HasPtr hasPtr("hello world");
+    test_Hasptr(hasPtr);
+    std::string* p = hasPtr.GetPtr();
+    
+    std::cout<< *(p)<<std::endl;
+  }
+}
+
 int main()
 {
   //
@@ -275,6 +410,9 @@ int main()
   //
   TEST_decltype();
 
+  //
+  TEST_copy_constuctor();
+  
   getchar();
   return 0;
 }
