@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "370"
             endingLineNumber = "370"
-            landmarkName = "main()"
+            landmarkName = "TEST_copy_constuctor()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -31,8 +31,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "324"
             endingLineNumber = "324"
-            landmarkName = "TEST_copy_constuctor()"
-            landmarkType = "9">
+            landmarkName = "HasPtr::operator=(const HasPtr&amp;rhs)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "333"
             endingLineNumber = "333"
-            landmarkName = "TEST_copy_constuctor()"
+            landmarkName = "test_Hasptr(HasPtr hp)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -81,38 +81,6 @@
             endingLineNumber = "293"
             landmarkName = "HasPtr::HasPtr()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HasPtr::HasPtr()"
-                  moduleName = "mytest"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/liyong/develop/mytest/testmain.cpp"
-                  timestampString = "560169996.631821"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HasPtr::HasPtr()"
-                  moduleName = "mytest"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/liyong/develop/mytest/testmain.cpp"
-                  timestampString = "560169996.6331871"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "293"
-                  endingLineNumber = "293"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -129,38 +97,6 @@
             endingLineNumber = "304"
             landmarkName = "HasPtr::HasPtr( const HasPtr&amp; ptr)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HasPtr::HasPtr(HasPtr const&amp;)"
-                  moduleName = "mytest"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/liyong/develop/mytest/testmain.cpp"
-                  timestampString = "560169996.6428601"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HasPtr::HasPtr(HasPtr const&amp;)"
-                  moduleName = "mytest"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/liyong/develop/mytest/testmain.cpp"
-                  timestampString = "560169996.644206"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "304"
-                  endingLineNumber = "304"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -175,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "332"
             endingLineNumber = "332"
-            landmarkName = "TEST_copy_constuctor()"
+            landmarkName = "test_Hasptr(HasPtr hp)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -191,8 +127,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "318"
             endingLineNumber = "318"
-            landmarkName = "test_Hasptr(HasPtr hp)"
-            landmarkType = "9">
+            landmarkName = "HasPtr::operator=(const HasPtr&amp;rhs)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -207,8 +143,40 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "319"
             endingLineNumber = "319"
-            landmarkName = "test_Hasptr(HasPtr hp)"
+            landmarkName = "HasPtr::operator=(const HasPtr&amp;rhs)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../chapter13.4/testmain.cpp"
+            timestampString = "560185386.557955"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../chapter13.4/testmain.cpp"
+            timestampString = "560185386.558265"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "Message::~Message()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
