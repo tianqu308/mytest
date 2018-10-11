@@ -9,6 +9,9 @@
 #include <iostream>
 #include <vector>
 #include <functional>
+#include <map>
+#include <string>
+
 class absInt
 {
 public:
@@ -115,6 +118,57 @@ void TEST_function_object()
   std::cout<<"logical or : "<<logicalor<<std::endl;
   std::cout<<"logical not : "<<logicalnot<<std::endl;
 }
+
+int add(int a, int b)
+{
+  return a+b;
+}
+
+auto mod = [](int a, int b){
+  return a%b;
+};
+
+struct divide
+{
+public:
+  int operator()(int denominator, int divisor)
+  {
+    return denominator/divisor;
+  }
+};
+
+void TEST_function()
+{
+  std::map<std::string, int(*)(int,int)> binops;
+  
+  binops.insert(std::make_pair("+", add));
+  binops.insert({"%", mod});
+//  binops.insert({"/", divide()});
+  
+  std::map<std::string, std::function<int(int,int)>>binops2;
+  typedef std::function<int(int,int)> functionInt;
+  functionInt f1= add;
+  functionInt f2 = divide();
+  functionInt f3 = mod;
+  functionInt f4 = std::minus<int>();
+  functionInt f5 = [](int a, int b )->int{
+    return a*b;
+  };
+  
+  binops2.insert({"+", f1});
+  binops2.insert({"/", f2});
+  binops2.insert({"%", f3});
+  binops2.insert({"-", f4});
+  binops2.insert({"*", f5});
+  
+  std::cout << "3 +5 : " <<binops2["+"](3,5) << std::endl;
+  std::cout << "3/5 : " <<binops2["/"](3,5) << std::endl;
+  std::cout << "50 %4 :" <<binops2["%"](50, 4)  << std::endl;
+  std::cout << "43 - 22 : " <<binops2["-"](43, 22)  << std::endl;
+  std::cout << "33 * 11 : " << binops2["*"](33,11) << std::endl;
+  
+}
+
 int main(int argc, const char * argv[]) {
   
   int i = -41;
@@ -178,5 +232,7 @@ int main(int argc, const char * argv[]) {
   
   //
   TEST_function_object();
+  
+  TEST_function();
   return 0;
 }
